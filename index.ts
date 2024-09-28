@@ -26,10 +26,6 @@ const client = new Client({
   ],
 });
 
-const resource = createAudioResource("./bigben.mp3", {
-  inlineVolume: true,
-});
-
 type Setting = {
   mode: "max" | "off" | "specific";
   specificChannelId?: string;
@@ -212,6 +208,9 @@ async function playTheBen(guildId?: string) {
     const player = createAudioPlayer();
     connection.subscribe(player);
 
+    const resource = createAudioResource("./bigben.mp3", {
+      inlineVolume: true,
+    });
     player.play(resource);
 
     // discount
